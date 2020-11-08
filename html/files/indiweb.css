@@ -1,0 +1,128 @@
+/* Astroberry Server */
+
+@font-face {
+  font-family: 'Roboto Light';
+  font-style: normal;
+  src: local('?'), url('./../fonts/Roboto-Light.ttf') format('truetype');
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	color: #fff;
+    font-family: 'Roboto Light', Arial, Helvetica;
+	font-size: 16px;
+    background-color: rgb(110, 132, 163);
+}
+
+.container {
+	margin: 0px;
+	padding: 0px;
+}
+
+.col-sm-6 {
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-bottom: 5px;
+}
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+#server_notify {
+	padding: 0;
+	font-size: 0.8em;
+}
+
+#server_notify ul {
+	list-style: none;
+	padding: 5px 15px;
+}
+
+#server_notify li {
+        display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 3px;
+}
+
+#server_command {
+        margin-bottom: 10px;
+}
+
+#notify_message {
+	width: 280px;
+	position: fixed;
+	bottom: 115px;
+	right: 0px;
+	z-index: 100;
+	font-size: 0.65em;
+}
+
+#notify_message .close {
+	font-size: 1.5em;
+	margin-left: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.alert {
+	padding: 4px 15px;
+	margin-bottom: 5px;
+}
+
+.alert-success {
+}
+
+.well {
+	background-color: #666;
+	margin-bottom: 0px;
+}
+
+.form-control {
+	height: 28px;
+}
+
+.form-control, .checkbox, label {
+	font-size: 0.8em;
+}
+
+.dropdown-toggle {
+	font-size: 1.0em;
+}
+
+.checkbox label {
+	font-weight: bold;
+}
+
+input[type="checkbox"] {
+	margin:-4px 0 0;
+}
+
+.btn {
+	font-size: 10px;
+}
+
+h1 {color:#3f4944;}
+h4 {
+	background-image: url("./../img/webmanager.svg");
+	background-repeat: no-repeat;
+	background-position: 5px 5px ;
+	background-color: rgb(110, 132, 163);
+	border-radius: 5px;
+	color:#fff;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 10px 10px 35px;
+	margin: 0px 0px 20px 0px;
+//	margin-bottom: 20px;
+}
+h3 {color:#1d7886;text-transform:uppercase;}
+h5 {color:#c98344;}
+
+#profile_auto_start, #profile_auto_connect {
+	margin-top: 1px;
+}
