@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xml:lang="en-gb" lang="en-gb" >
+<head>
+<meta charset="UTF-8">
+<link rel="icon" sizes="16x16" type="image/png" href="img/icon/icon.png">
+<title>AstroAir Server</title>
+<style>
+<!-- https://www.dafont.com/roboto.font -->
+@font-face {font-family: 'Roboto Light';font-style: normal;src: local('?'), url('/files/Roboto-Light.ttf') format('truetype');}
+html {height:100%;}
+body {margin:0;padding:0;background-color:#000;background-image: url("/files/background.jpg");background-repeat:no-repeat;background-size:cover;background-position:top center;font-family:'Roboto Light', Arial, Helvetica;color: #fff;}
+#welcome {background-color:rgba(0, 0, 0, 0.6);width:50%;border:1px #333 solid;border-radius:10px;padding:20px;display:block;overflow:auto;position:relative;top:10%;left:50%;transform:translateY(10%) translateX(-50%);}
+#connect {display:block;width:120px;padding:20px;border:0px solid;border-radius:10px;text-align:center;background-color:#009933;font-size: 20px;margin:35px 20px 20px 20px;position:relative;left:10%;transform:translateX(-10%);}
+#connect:hover {color:#666;background-color:#aaa;}
+#credits {display:block;width:60%;float:left;font-weight:bold;}
+#credits img {width:30px;height:30px;margin-left:10px;}
+#logo {display:block;width:40%;float:left;text-align:right;}
+#logo img {width:50px;height:50px;position:relative;top:-20px;left:-40px;}
+#particles-js {position:absolute;left:0;top:0;width:100%;height:95%;z-index:-100;}
+a {color:#fff;font-weight:bold;text-decoration:none;}
+a:visited {color:#fff;font-weight:bold;text-decoration:none;}
+</style>
+<script src="js/particles.js"></script>
+</head>
+<body>
+<div id="particles-js"></div>
+<div id="welcome">
+	<h1>欢迎来到 AstroAir Server</h1>
+	<p>AstroAir服务器是一个随时可用的Raspberry Pi系统，用于控制您所有的天文设备。<br>只需连接您的设备，即可体验宇宙。</p>
+	<a id="connect" href="/novnc/index.html?autoconnect=true&port=5901">桌面</a><a id="connect" href="main.html">网络工具</a>
+	<p style="width:70%;display:block;float:left;">AstroAir服务器设计用于您的专用网络。如果你不想通过不受信任的网络（如因特网）访问它，你应该选择它。</p>
+	<p id="version" style="font-size:1.5em;font-weight:bold;width:30%;display:block;float:left;text-align:right;"></p>
+	<div id="credits">
+		<a style="vertical-align:top;">技术支持</a>
+		<a href="https://www.raspberrypi.org/" target="_blank"><img src="/files/raspberry-pi.png" alt="Raspberry Pi" title="Raspberry Pi" /></a>
+		<a href="http://indilib.org/" target="_blank"><img src="/files/indilib.png" alt="INDI" title="INDI" /></a>
+		<a href="https://edu.kde.org/kstars/" target="_blank"><img src="/files/kstars.png" alt="KStars" title="KStars" /></a>
+		<a href="https://kanaka.github.io/noVNC/" target="_blank"><img src="/files/novnc.png" alt="noVNC" title="noVNC" /></a>
+	</div>
+	<a id="logo" href="https://astroair.cn/" target="_blank">v2.0.0</a>
+</div>
+</body>
+<script>
+particlesJS.load('particles-js', 'js/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
+</script>
+<script>
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET","/version.html",true);
+    xmlhttp.addEventListener('load', function() {
+        if (this.status === 200) {
+            document.getElementById('version').innerHTML = xmlhttp.responseText;
+		}
+    });
+	xmlhttp.send();
+</script>
+</html>

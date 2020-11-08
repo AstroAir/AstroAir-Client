@@ -1,0 +1,1390 @@
+<!--
+	这是AstroAir客戶端的一部分，主要由Max编写。
+	编写时间：2020.7.15
+	第一次修改：8月7日
+	第二次修改：8月14日
+	第三次修改：8月22日
+	第四次修改：8月29日
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>AstroAirWEB控制台</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--CSS 代码-->
+    <link rel="stylesheet" type="text/css" href="css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mdb.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="css/aladin.min.css" />-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="googlebot" content="index, follow" />
+	<meta name="robots" content="index, follow" />
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="img/icon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/icon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/icon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/icon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/icon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/icon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/icon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/icon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/icon/apple-icon-180x180.png">
+	
+	<link rel="icon" type="image/png" sizes="192x192" href="img/icon/android-icon-192x192.png">
+    <link rel="icon" sizes="16x16" type="image/png" href="img/icon/astroair-16x16.png">
+    <link rel="icon" sizes="24x24" type="image/png" href="img/icon/astroair-24x24.png">
+    <link rel="icon" sizes="32x32" type="image/png" href="img/icon/astroair-32x32.png">
+    <link rel="icon" sizes="48x48" type="image/png" href="img/icon/astroair-48x48.png">
+    <link rel="icon" sizes="60x60" type="image/png" href="img/icon/astroair-60x60.png">
+    <link rel="icon" sizes="64x64" type="image/png" href="img/icon/astroair-64x64.png">
+    <link rel="icon" sizes="72x72" type="image/png" href="img/icon/astroair-72x72.png">
+    <link rel="icon" sizes="76x76" type="image/png" href="img/icon/astroair-76x76.png">
+    <link rel="icon" sizes="96x96" type="image/png" href="img/icon/astroair-96x96.png">
+    
+	<link rel="manifest" href="img/manifest.json">
+ 	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="./img/icon/ms-icon-96x96.png">
+	<meta name="theme-color" content="#ffffff">
+
+  </head>
+  
+<body class="text-white" id="top-section">
+	
+	<nav class="navbar fixed-top navbar-dark bd-navbar navbar-custom d-flex flex-column flex-sm-row px-sm-3 px-1 py-0" id="navbarVoyager">
+		<div class="container-fluid ">
+			<div class="navbar-brand align-self-center m-auto m-sm-2" id="logoCont">
+				<div class="rotate p-0" id="logorotate" style="transform: scale(1) rotate(0turn);">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Livello_1" x="0px" y="0px" viewBox="0 0 699.4 706.2" style="enable-background:new 0 0 699.4 706.2;" xml:space="preserve" class="svg replaced-svg">
+						<style type="text/css"> .st0{fill:#4285F4;}</style>
+						<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"><path id="logoGear" class="st0" d="M3155.3,12615.4c-781.9-85.1-1489.2-430.1-2038.7-994c-540-554.4-867.9-1265.5-935.7-2027.3 c-13.4-149.1-13.4-449.2,0-598.3C313.7,7500.9,1450.2,6266,2930.7,6007c363.2-64,788.5-64,1152.7,0 c443.5,77.4,875.5,250.4,1257.8,501.8c338.4,222.7,672.9,548.6,904.2,880.3c328.8,472.2,534.3,1035.1,586.9,1609.6 c12.4,141.5,12.4,451.1,0,592.6c-96.5,1062.9-694.9,2014.8-1614.4,2569.2c-410,247.6-881.3,403.4-1372.5,455.9 C3680.1,12633.6,3317.8,12633.6,3155.3,12615.4z M3840.9,12033.1c331.1-43.1,612.8-128.4,904.5-276.1 c533-269.7,959.5-697.1,1228.3-1231.9l44-89.9l-429.3-429.3c-236.7-236.7-432-428.4-433.9-426.5c-1.8,2.8-9.2,31.2-15.6,64.2 c-6.4,33-27.5,109.2-47.7,168.8c-284.4,877.9-1226.4,1354.9-2108,1068.7c-161.4-52.3-344-148.6-484.3-254.1 c-36.7-27.5-437.6-422-894.4-879.7l-827.4-829.2l-6.4,30.3c-3.7,16.5-11,94.5-17.4,172.5c-24.8,331.1,23.8,710.9,134.8,1044.8 c287.1,858.6,986.1,1530.1,1854.8,1780.5c184.4,52.3,385.3,88.1,593.5,104.6C3428.1,12057.9,3733.6,12047.8,3840.9,12033.1z M3679.1,10245c206.5-39.2,371.8-128.1,517.1-280.1c118.5-122.3,183.5-230.4,230.4-378.5c109.9-347.9,13.4-726.4-248.5-980.7 c-126.2-122.3-265.7-201.7-440.6-249.5c-106.1-29.6-356.5-29.6-462.6,0c-325,88.9-579.2,322.1-683.4,628 c-168.2,494.2,90.8,1034.2,585.9,1219.6C3320.7,10257.5,3525.2,10274.7,3679.1,10245z M6258,9464.6c11-145.9,8.3-302.7-10.1-467.8 c-107.3-1002.6-765-1873.1-1704.3-2256.6c-735.7-300-1556.7-267.9-2271.2,89.9c-527.4,263.3-966.8,702.7-1232.9,1233.8l-44.9,90.8 l429.3,429.3c236.7,236.7,432,428.4,433.9,426.5c1.8-2.8,9.2-31.2,15.6-64.2c6.4-33,27.5-109.2,47.7-168.8 c95.4-297.2,272.4-559.6,507.3-755.9c510.9-427.5,1203.5-516.4,1800.7-231.2c106.4,50.5,244,138.5,327.5,208.2 c30.3,24.8,420.1,411.9,866.8,859.5l811.8,813.6l6.4-30.3C6244.2,9625.2,6252.5,9545.4,6258,9464.6z"></path></g>
+					</svg>
+				</div>
+				<div class="rotate p-0" id="logorotate2" style="transform: scale(1) rotate(0turn); opacity: 1;">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Livello_1" x="0px" y="0px" viewBox="0 0 699.4 706.2" style="enable-background:new 0 0 699.4 706.2;" xml:space="preserve" class="svg replaced-svg">
+						<style type="text/css"> .st0{fill:#4285F4;}</style>
+						<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"><path id="logoGear" class="st0" d="M3155.3,12615.4c-781.9-85.1-1489.2-430.1-2038.7-994c-540-554.4-867.9-1265.5-935.7-2027.3 c-13.4-149.1-13.4-449.2,0-598.3C313.7,7500.9,1450.2,6266,2930.7,6007c363.2-64,788.5-64,1152.7,0 c443.5,77.4,875.5,250.4,1257.8,501.8c338.4,222.7,672.9,548.6,904.2,880.3c328.8,472.2,534.3,1035.1,586.9,1609.6 c12.4,141.5,12.4,451.1,0,592.6c-96.5,1062.9-694.9,2014.8-1614.4,2569.2c-410,247.6-881.3,403.4-1372.5,455.9 C3680.1,12633.6,3317.8,12633.6,3155.3,12615.4z M3840.9,12033.1c331.1-43.1,612.8-128.4,904.5-276.1 c533-269.7,959.5-697.1,1228.3-1231.9l44-89.9l-429.3-429.3c-236.7-236.7-432-428.4-433.9-426.5c-1.8,2.8-9.2,31.2-15.6,64.2 c-6.4,33-27.5,109.2-47.7,168.8c-284.4,877.9-1226.4,1354.9-2108,1068.7c-161.4-52.3-344-148.6-484.3-254.1 c-36.7-27.5-437.6-422-894.4-879.7l-827.4-829.2l-6.4,30.3c-3.7,16.5-11,94.5-17.4,172.5c-24.8,331.1,23.8,710.9,134.8,1044.8 c287.1,858.6,986.1,1530.1,1854.8,1780.5c184.4,52.3,385.3,88.1,593.5,104.6C3428.1,12057.9,3733.6,12047.8,3840.9,12033.1z M3679.1,10245c206.5-39.2,371.8-128.1,517.1-280.1c118.5-122.3,183.5-230.4,230.4-378.5c109.9-347.9,13.4-726.4-248.5-980.7 c-126.2-122.3-265.7-201.7-440.6-249.5c-106.1-29.6-356.5-29.6-462.6,0c-325,88.9-579.2,322.1-683.4,628 c-168.2,494.2,90.8,1034.2,585.9,1219.6C3320.7,10257.5,3525.2,10274.7,3679.1,10245z M6258,9464.6c11-145.9,8.3-302.7-10.1-467.8 c-107.3-1002.6-765-1873.1-1704.3-2256.6c-735.7-300-1556.7-267.9-2271.2,89.9c-527.4,263.3-966.8,702.7-1232.9,1233.8l-44.9,90.8 l429.3,429.3c236.7,236.7,432,428.4,433.9,426.5c1.8-2.8,9.2-31.2,15.6-64.2c6.4-33,27.5-109.2,47.7-168.8 c95.4-297.2,272.4-559.6,507.3-755.9c510.9-427.5,1203.5-516.4,1800.7-231.2c106.4,50.5,244,138.5,327.5,208.2 c30.3,24.8,420.1,411.9,866.8,859.5l811.8,813.6l6.4-30.3C6244.2,9625.2,6252.5,9545.4,6258,9464.6z"></path></g>
+					</svg>
+				</div>
+				<img src="./img/icon/astroair-96x96.png" alt="logo" id="logomenu">
+				<div class="d-sm-inline-flex" id="logoText">
+					<p class="h5 m-auto">
+						AstroAir<span class="sub-title subtitle">Web控制台</span>
+					</p>
+				</div>
+			</div>
+			<div class="align-self-center m-auto m-sm-2">
+				<button class="btn btn-sm btn-warning px-sm-3 p-2 lev1active doubleConfirm waves-effect waves-light" id="abortAllBtn" value="普通中断">
+					<svg class="svg-inline--fa fa-exclamation-triangle fa-w-18 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="exclamation-triangle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path></svg><!-- <i class="fas fa-exclamation-triangle mr-2"></i> -->中断
+				</button>
+				<button class="btn btn-sm btn-danger px-sm-3 p-2 lev1active doubleConfirm waves-effect waves-light" id="haltAllBtn" value="全部停止">
+					<svg class="svg-inline--fa fa-skull-crossbones fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="skull-crossbones" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M439.15 453.06L297.17 384l141.99-69.06c7.9-3.95 11.11-13.56 7.15-21.46L432 264.85c-3.95-7.9-13.56-11.11-21.47-7.16L224 348.41 37.47 257.69c-7.9-3.95-17.51-.75-21.47 7.16L1.69 293.48c-3.95 7.9-.75 17.51 7.15 21.46L150.83 384 8.85 453.06c-7.9 3.95-11.11 13.56-7.15 21.47l14.31 28.63c3.95 7.9 13.56 11.11 21.47 7.15L224 419.59l186.53 90.72c7.9 3.95 17.51.75 21.47-7.15l14.31-28.63c3.95-7.91.74-17.52-7.16-21.47zM150 237.28l-5.48 25.87c-2.67 12.62 5.42 24.85 16.45 24.85h126.08c11.03 0 19.12-12.23 16.45-24.85l-5.5-25.87c41.78-22.41 70-62.75 70-109.28C368 57.31 303.53 0 224 0S80 57.31 80 128c0 46.53 28.22 86.87 70 109.28zM280 112c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32zm-112 0c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32z"></path></svg><!-- <i class="fas fa-skull-crossbones mr-2"></i> -->全部停止
+				</button>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid text-center p-3 h-auto" id="statusBarContainer">
+		<div id="statusBarTop" class="p-2 primary-color-dark m-auto evid_bkg extraSmallText align-self-center w-50 border-white text-warning border-radius-bottom">
+			Status Text
+			<div class="float-right text-primary">
+				<svg class="svg-inline--fa fa-spinner fa-w-16 fa-pulse" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"></path></svg><!-- <i class="fas fa-spinner fa-pulse"></i> -->
+			</div>
+		</div>
+	</div>
+
+<div id="page-content">
+    <div class="container-fluid text-center px-3 px-md-4">
+		 <div class="row pt-sm-3 pt-5">
+			 <!--Connect board-->
+			 <div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+				<a class="anchor" id="Connection"></a>
+				<div class="card elegant-color h100" id="panConnection">
+					<div class="card-header">
+						<h2 class="m-0">
+							<svg class="svg-inline--fa fa-plug fa-w-12 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plug" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M256 144V32c0-17.673 14.327-32 32-32s32 14.327 32 32v112h-64zm112 16H16c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h16v32c0 77.406 54.969 141.971 128 156.796V512h64v-99.204c73.031-14.825 128-79.39 128-156.796v-32h16c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16zm-240-16V32c0-17.673-14.327-32-32-32S64 14.327 64 32v112h64z"></path></svg><!-- <i class="fas fa-plug mr-2"></i> -->连接信息
+							<div class="collapseBtn ml-2">
+								<img src="img/collapseIcn.png">
+							</div>
+						</h2>
+					</div>
+					<div class="card-body" id="box1">
+						<div class="form-group">
+							<div class="form-row justify-content-center mb-3">
+								<div class="form-col-md">
+									<label for="ipAddress" class="active">IP地址 / 主机名称</label>
+									<input type="text" value="" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy" id="ipAddress" aria-describedby="ip" placeholder="这里填写地址">
+									<small id="ipHelp" class="form-text text-muted">填写IP地址或主机名称，空白则默认为localhost</small>
+								</div>
+								<div class="form-col-md">
+									<label for="ipPort">端口</label>
+									<select class="browser-default custom-select custom-select-sm bg-dark text-white border-sx-blueVoy" id="ipPort">
+										<option value="5950" selected="">5950</option>
+										<option value="5951">5951</option>
+										<option value="5952">5952</option>
+										<option value="5952">5953</option>
+									</select>
+									<small id="ipPortHelp" class="form-text text-muted">选择端口</small>
+								</div>
+							</div>
+						</div>
+						<div class="input-group-append d-flex">
+							<button id="connectBtn" class="btn btn-primary btn-sm m-1 px-1 flex-fill waves-effect waves-light">
+								<svg class="svg-inline--fa fa-link fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="link" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><!-- <i class="fas fa-link mr-1"></i> -->连接
+							</button>
+							<button id="disconnectBtn" class="btn btn-danger btn-sm m-1 px-1 flex-fill doubleConfirm waves-effect waves-light" value="断开与Voyager的连接">
+								<svg class="svg-inline--fa fa-unlink fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="unlink" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M304.083 405.907c4.686 4.686 4.686 12.284 0 16.971l-44.674 44.674c-59.263 59.262-155.693 59.266-214.961 0-59.264-59.265-59.264-155.696 0-214.96l44.675-44.675c4.686-4.686 12.284-4.686 16.971 0l39.598 39.598c4.686 4.686 4.686 12.284 0 16.971l-44.675 44.674c-28.072 28.073-28.072 73.75 0 101.823 28.072 28.072 73.75 28.073 101.824 0l44.674-44.674c4.686-4.686 12.284-4.686 16.971 0l39.597 39.598zm-56.568-260.216c4.686 4.686 12.284 4.686 16.971 0l44.674-44.674c28.072-28.075 73.75-28.073 101.824 0 28.072 28.073 28.072 73.75 0 101.823l-44.675 44.674c-4.686 4.686-4.686 12.284 0 16.971l39.598 39.598c4.686 4.686 12.284 4.686 16.971 0l44.675-44.675c59.265-59.265 59.265-155.695 0-214.96-59.266-59.264-155.695-59.264-214.961 0l-44.674 44.674c-4.686 4.686-4.686 12.284 0 16.971l39.597 39.598zm234.828 359.28l22.627-22.627c9.373-9.373 9.373-24.569 0-33.941L63.598 7.029c-9.373-9.373-24.569-9.373-33.941 0L7.029 29.657c-9.373 9.373-9.373 24.569 0 33.941l441.373 441.373c9.373 9.372 24.569 9.372 33.941 0z"></path></svg><!-- <i class="fas fa-unlink mr-1"></i> -->断开连接
+							</button>
+						</div>
+						<small id="messageHelp" class="form-text text-muted">连接AstroAir软件</small>
+						<div class="mt-3">
+							<ul class="list-group bg-dark">
+								<li class="list-group-item bg-dark d-flex align-items-center justify-content-between">
+									<span id="statGenText" class="text-muted info-data-item w-auto">状态</span><span class="environmentField info-data-item text-right" id="generalStatusText"></span>
+								</li>
+								<li class="list-group-item bg-dark d-flex align-items-center justify-content-between">
+									<span id="remoteActionText" class="text-muted info-data-item w-auto">动作</span><span class="environmentField info-data-item  text-right" id="generalActionText"></span>
+								</li>
+							</ul>
+						</div>
+						<div class="mt-3">
+							<ul class="list-group bg-dark">
+								<li id="dsRunli" class="list-group-item bg-dark d-none align-items-center justify-content-between">
+									<span id="statGenText" class="text-muted info-data-item text-uppercase w-auto text-warning">脚本执行中</span><span class="environmentField info-data-item text-right" id="dragRunnTextTop"></span>
+								</li>
+								<li id="seqRunli" class="list-group-item bg-dark d-none align-items-center justify-content-between">
+									<span id="remoteActionText" class="text-muted info-data-item text-uppercase w-auto text-warning">序列执行中</span><span class="environmentField info-data-item text-right" id="seqRunTextTop"></span>
+								</li>
+							</ul>
+							<div class="input-group m-auto">
+								<div class="switch blindSwitch m-auto">
+									<small id="messageHelp" class="form-text text-muted">AstroAir状态指示器</small>
+								</div>
+							</div>
+							<ul class="list-group bg-dark mt-3">
+								<li class="list-group-item bg-dark d-flex align-items-center justify-content-between" id="collapseResetLocalStorage">
+									<span class="text-center m-auto text-muted text-small">清除存储数据</span>
+									<div class="f-right text-muted">
+										<svg class="svg-inline--fa fa-caret-square-down fa-w-14 pointer" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-square-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zM92.5 220.5l123 123c4.7 4.7 12.3 4.7 17 0l123-123c7.6-7.6 2.2-20.5-8.5-20.5H101c-10.7 0-16.1 12.9-8.5 20.5z"></path></svg><!-- <i class="fas fa-caret-square-down pointer"></i> -->
+									</div> 
+								</li>
+							</ul>
+							<div id="resetLocalStorageCont" class="collapse">
+								<ul class="list-group bg-dark mt-0">
+									<li class="list-group-item bg-dark">
+										<button id="resetLocalStorage" class="btn btn-sm btn-outline-danger m-1 px-2 reset-btn doubleConfirm waves-effect waves-light" type="button" value="Delete all Stored data and Refresh page">
+											<svg class="svg-inline--fa fa-times-circle fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path></svg><!-- <i class="fas fa-times-circle mr-2"></i> -->清除存储数据并刷新页面
+										</button>
+										<small id="messageHelp" class="form-text text-muted">点击按钮将清除所有存储在浏览器（本地存储）里的数据，并刷新页面。此操作将断开所有连接，并且移除所有的输入数据和偏好设置，包括IP地址以及FOV数据。</small>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Card footer -->
+					<div class="card-footer text-muted text-center">
+						<div class="status-item d-inline-flex">
+							<div class="led-circle mr-2" div="" id="connStatus" name="connStatus"></div>
+								<p class="statusText">
+									<span id="voyver">软件连接信息面板</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--设备管理-->
+				<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+					<a class="anchor" id="Environment"></a>
+					<div class="card elegant-color h100">
+						<div class="card-header">
+							<h2 class="m-0">
+								<svg class="svg-inline--fa fa-cog fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cog" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"></path></svg><!-- <i class="fas fa-cog mr-2"></i> -->设备详情
+								<div class="collapseBtn ml-2">
+									<img src="img/collapseIcn.png">
+								</div>
+							</h2>
+						</div>
+						<!-- Card content -->
+						<div class="card-body">
+							<ul class="list-group bg-dark">
+								<li class="list-group-item bg-dark d-flex align-items-center justify-content-between">
+									<div class="statusLed" id="startupConnLed"></div>
+									<span id="startupConnText">设备连接信息</span>
+								</li>
+							</ul>
+							<div class="my-3">
+								<div class="text-center p-2 text-small extraSmallText text-uppercase text-muted">
+									选择文件
+								</div>
+								<div class="list-group-item bg-dark text-center d-inline-flex justify-content-between align-items-center p-1 w-100"><div>
+								<span id="selectedProfile" class="text-small ml-1"></span> </div>
+								<div>
+									<button id="profileListtBtn" class="btn btn-sm btn-indigo mx-1 flex-end px-2 py-1 lev1active waves-effect waves-light" type="button">
+										更换
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="my-3 d-none" id="cont-profile-list">
+							<div class="text-center p-2 text-small extraSmallText text-uppercase text-muted">
+								改变文件
+							</div>
+							<div class="text-right">
+								<button id="closeProfileListtBtn" class="btn btn-sm btn-grey mx-1 flex-end px-2 py-1 lev1active waves-effect waves-light" type="button">
+									关闭
+								</button>
+							</div>
+							<ul class="list-group bg-dark d-flex scrollbar scrollbar-primary" id="profileUl"></ul>
+						</div>
+						<ul class="list-group bg-dark mt-3">
+							<li class="list-group-item bg-dark d-flex align-items-center justify-content-between mount-panel-item px-2">
+								<div class="col p-0">连接设备</div>
+								<div class="d-flex align-items-center justify-content-center px-2" id="divStartup">
+									<button id="startupConn" class="btn btn-sm btn-primary px-2 py-1 z-depth-0 waves-effect m-1" type="button">
+										连接
+									</button>
+									<button id="startupDisConn" class="btn btn-sm btn-danger px-2 py-1 z-depth-0 waves-effect m-1 doubleConfirm" type="button" value="Instrument Setup Disconnect">
+										断开连接
+									</button>
+								</div>
+							</li>
+						</ul>
+						<small id="messageHelp" class="form-text text-muted">
+							连接至AstroAir服务器设备控制终端
+						</small>
+						<div class="mt-3">
+							<ul class="list-group bg-dark" id="envUl"></ul>
+						</div>
+					</div>
+					<!-- Card footer -->
+					<div class="card-footer text-muted text-center">
+						设备详情面板
+					</div>
+				</div>
+			</div>
+			<!--Data Menu-->
+			<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+				<a class="anchor" id="Progress"></a>
+				<div class="card elegant-color h100">
+					<div class="card-header">
+						<h2 id="data_show" class="m-0">
+							<svg class="svg-inline--fa fa-stopwatch fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="stopwatch" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 304c0 114.9-93.1 208-208 208S16 418.9 16 304c0-104 76.3-190.2 176-205.5V64h-28c-6.6 0-12-5.4-12-12V12c0-6.6 5.4-12 12-12h120c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-28v34.5c37.5 5.8 71.7 21.6 99.7 44.6l27.5-27.5c4.7-4.7 12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17l-29.4 29.4-.6.6C419.7 223.3 432 262.2 432 304zm-176 36V188.5c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12V340c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"></path></svg>
+							进度
+							<div class="collapseBtn ml-2">
+								<img src="img/collapseIcn.png">
+							</div>
+						</h2>
+					</div>
+				<div id="data"  class="card-body">
+					<div class="row justify-content-center">
+						<div class="col w100">
+							<span class="min-chart" id="singleShotChart" data-percent="0"><span class="percent">0</span><canvas height="110" width="110"></canvas></span>
+							<h5>
+								<span class="btn-outline-primary badge-voy">单张拍摄</span>
+							</h5>
+						</div>
+					<div class="col">
+						<span class="min-chart" id="seqChart" data-percent="0"><span class="percent">0</span><canvas height="110" width="110"></canvas></span>
+						<h5>
+							<span class="btn-outline-green badge-voy">序列拍摄</span>
+						</h5>
+					</div>
+				</div>
+				<div class="contProgDetail mt-3">
+					<div class="text-center p-2 extraSmallText text-uppercase text-muted">
+						单张信息
+					</div>
+					<ul class="list-group bg-dark text-small">
+						<li class="list-group-item bg-dark mount-panel-item">
+							<div class="text-center shInField" id="fileShotText"></div>
+						</li>
+						<li class="list-group-item bg-dark d-flex mount-panel-item ">
+							<div class="col-4 p-0">
+								<div class="text-center text-muted ">曝光时间</div>
+								<div class="text-center shInField" id="expoText"></div>
+							</div>
+							<div class="col-4 p-0">
+								<div class="text-center text-muted ">已用时</div>
+								<div class="text-center shInField text-muted" id="elapsedText"></div>
+							</div>
+							<div class="col-4 p-0">
+								<div class="text-center text-muted ">预计剩余时间</div>
+								<div class="text-center shInField" id="remainText"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="contProgDetail mt-3">
+					<div class="text-center p-2 extraSmallText text-uppercase text-muted">
+						序列信息
+					</div>
+					<ul class="list-group bg-dark text-small">
+						<li class="list-group-item bg-dark mount-panel-item">
+							<div class="text-center" id="runSeqText"></div>
+						</li>
+						<li class="list-group-item bg-dark d-flex mount-panel-item ">
+							<div class="col-4 p-0">
+								<div class="text-center text-muted ">开始时间</div>
+								<div class="text-center"  id="seqStartTime"></div>
+							</div>
+							<div class="col-4 p-0">
+								<div class="text-center text-muted ">预计剩余时间</div>
+								<div class="text-center" id="seqRemain"></div>
+							</div>
+							<div class="col-4 p-0">
+								<div class="text-center text-muted ">结束时间</div>
+								<div class="text-center" id="seqEndTime"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+				<div class="card-footer text-muted text-center">
+					进度面板
+				</div>
+			</div>
+		</div>
+</div>
+		<!--CCD menu-->
+		<div class="row">
+			<!-- Nearest Image-->
+		<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+			<a class="anchor" id="LastImage"></a>
+			<div class="card elegant-color h100">
+				<div class="card-header" id="imageTitleid">
+					<h2 class="m-0">
+						<svg class="svg-inline--fa fa-image fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"></path></svg><!-- <i class="fas fa-image mr-2"></i> -->最近图像
+						<div class="collapseBtn ml-2">
+							<img src="img/collapseIcn.png" alt="collapse">
+						</div>
+					</h2>
+				</div>
+				<!-- Card content -->
+				<div class="card-body" style="">
+					<div id="mdb-lightbox-ui">
+						<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+							<div class="pswp__bg"></div>
+								<!-- Slides wrapper with overflow:hidden. -->
+								<div class="pswp__scroll-wrap">
+									<div class="pswp__container">
+										<div class="pswp__item"></div>
+										<div class="pswp__item"></div>
+										<div class="pswp__item"></div>
+									</div>
+
+									<div class="pswp__ui pswp__ui--hidden">
+										<div class="pswp__top-bar d-flex justify-content-center">
+											<div class="pswp__counter"></div>
+											<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+											<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+											<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+											<div class="pswp__preloader d-none">
+											<div class="pswp__preloader__icn">
+											<div class="pswp__preloader__cut">
+											<div class="pswp__preloader__donut"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+							<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+							<div class="pswp__caption">
+								<div class="pswp__caption__center"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+					<div class="mdb-lightbox no-margin" data-pswp-uid="1">
+						<figure class="col-md view" id="imgPreviewCont">
+							<a href="img/ImgPreview.jpeg" data-size="600x602" id="img_preview_a">
+								<img src="img/ImgPreview.jpeg" class="img-fluid" alt="shot preview" id="img_preview">
+							</a>
+						</figure>
+					</div>
+					<div class="clearfix"></div>
+					<div class="mt-3">
+						<ul class="list-group bg-dark text-small">
+							<li class="list-group-item bg-dark d-flex mount-panel-item ">
+								<div class="col-2 p-0 text-muted text-left">目标</div>
+								<div class="col-4 text-center" id="SequenceTarget"></div>
+								<div class="col-2 p-0 text-muted text-left" id="">
+									滤镜
+								</div>
+								<div class="col-4 text-center" id="Filter"></div>
+							</li>
+							<li class="list-group-item bg-dark d-flex mount-panel-item ">
+								<div class="col-2 p-0 text-muted text-left">时长 (s)</div>
+								<div class="col-4 text-center" id="Expo"></div>
+								<div class="col-2 p-0 text-muted text-left">像素合并</div>
+								<div class="col-4 text-center" id="Bin"></div>
+							</li>
+							<li class="list-group-item bg-dark d-flex mount-panel-item ">
+								<div class="col-2 p-0 text-muted text-left">
+									Star Idx
+								</div>
+								<div class="col-4 text-center" id="StarIndex"></div>
+								<div class="col-2 p-0 text-muted text-left">HFD</div>
+								<div class="col-4 text-center" id="HFD"></div>
+							</li>
+						</ul>
+					</div>
+					<div class="m-3">
+						<div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+							<div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+								<div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+							</div>
+						</div>
+						<button class="btn btn-sm btn-flat m-1 p-2 lev1active float-right waves-effect waves-effect" id="resetImgChart">
+							<svg class="svg-inline--fa fa-broom fa-w-20 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="broom" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"></path></svg><!-- <i class="fas fa-broom mr-1"></i> --> 清除
+						</button>
+
+						<canvas id="imageStatChart" width="399" height="199" class="chartjs-render-monitor" style="display: block; width: 399px; height: 199px;"></canvas>
+						<ul class="list-group bg-dark my-2" id="imgStatsUl">
+							<li class="list-group-item bg-dark d-flex align-items-center justify-content-between p-2">
+								<span class="info-data-item extraSmallText text-muted col m-0 p-0">TIME</span>
+								<span class="info-data-item extraSmallText text-muted col-2  m-0 p-0">TARGET</span>
+								<span class="info-data-item extraSmallText text-muted col-2  m-0 p-0">FLTR</span>
+								<span class="info-data-item extraSmallText text-muted col  m-0 p-0">BIN</span>
+								<span class="info-data-item extraSmallText text-muted col  m-0 p-0">STARidx</span>
+								<span class="info-data-item extraSmallText text-muted col  m-0 p-0">HFD</span>
+								<span class="info-data-item extraSmallText text-muted col  m-0 p-0">EXPO</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- Card footer -->
+				<div class="card-footer text-muted text-center">
+					图像预览，点击放大
+				</div>
+			</div>
+		</div>
+			<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+				<a class="anchor" id="Camera"></a>
+				<div class="card elegant-color h100">
+					<div class="card-header">
+						<h2 id="camera_show" class="m-0">
+							<svg class="svg-inline--fa fa-camera fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="camera" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"></path></svg>
+							相机
+							<div class="collapseBtn ml-2">
+								<img src="img/collapseIcn.png">
+							</div>
+						</h2> 
+					</div>
+					<div id="camera" class="card-body">
+						<div class="input-group d-flex">
+							<div class="col m-1 p-0">
+								<label for="timeShot" class="active">曝光 (秒)</label>
+								<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy" id="ex" value="1" placeholder="Exposure (s)">
+							</div>
+							<div class="col m-1 p-0">
+								<label for="filterSelect">滤镜</label>
+									<select class="browser-default custom-select custom-select-sm bg-dark text-white border-sx-blueVoy" id="filter">
+										<option value="" selected="">Filter</option>
+									</select>
+							</div>
+							<div class="col m-1 p-0">
+								<label for="binSelect">像素合并</label>
+								<select class="browser-default custom-select custom-select-sm bg-dark text-white border-sx-blueVoy" id="bin">
+									<option value="1" selected="">1x1</option>
+									<option value="2">2x2</option>
+									<option value="3">3x3</option>
+								</select>
+							</div>
+						</div>
+						<div class="input-group d-flex">
+							<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy m-1" id="gain" placeholder="增益">
+							<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy m-1" id="offset" placeholder="偏置">
+						</div>
+						<div class="d-flex">
+							<button id="remoteShotbtn" class="btn btn-primary btn-sm m-1 btn-voy-item px-2 actBtn waves-effect waves-light"><svg class="svg-inline--fa fa-camera fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="camera" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"></path></svg>拍摄</button>
+							<button id="remoteShotAbortbtn" class="btn btn-danger btn-sm m-1 btn-voy-item px-2 doubleConfirm waves-effect waves-light"><svg class="svg-inline--fa fa-times fa-w-11 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>中断</button>
+						</div>
+						<div id="progBar" class="mt-2">
+							<div id="animBar"></div>
+						</div>
+						<hr class="mt-2 mb-3">
+						<!--计划拍摄-->
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-between" id="collapseSeqTable">
+							<span class="text-center m-auto text-muted">计划拍摄</span>
+							<div class="f-right text-muted">
+								<svg class="svg-inline--fa fa-caret-square-down fa-w-14 pointer" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-square-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zM92.5 220.5l123 123c4.7 4.7 12.3 4.7 17 0l123-123c7.6-7.6 2.2-20.5-8.5-20.5H101c-10.7 0-16.1 12.9-8.5 20.5z"></path></svg><!-- <i class="fas fa-caret-square-down pointer"></i> -->
+							</div> 
+						</li>
+						<div id="SeqCapture" class="collapse" style="">
+							<div class="input-group d-flex">
+								<div class="col m-1 p-0">
+									<label for="timeShot" class="active">曝光 (秒)</label>
+									<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy" id="Seqex" value="1" placeholder="Exposure (s)">
+								</div>
+								<div class="col m-1 p-0">
+									<label for="SeqfilterSelect">滤镜</label>
+										<select class="browser-default custom-select custom-select-sm bg-dark text-white border-sx-blueVoy" id="Seqfilter">
+											<option value="" selected="">Filter</option>
+										</select>
+								</div>
+								<div class="col m-1 p-0">
+									<label for="SeqbinSelect">像素合并</label>
+									<select class="browser-default custom-select custom-select-sm bg-dark text-white border-sx-blueVoy" id="Seqbin">
+										<option value="1" selected="">1x1</option>
+										<option value="2">2x2</option>
+										<option value="3">3x3</option>
+									</select>
+								</div>
+							</div>
+							<div class="input-group d-flex">
+								<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy m-1" id="Seqgain" placeholder="增益">
+								<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy m-1" id="Seqoffset" placeholder="偏置">
+							</div>
+							<div class="d-flex">
+								<button id="SeqremoteShotbtn" class="btn btn-primary btn-sm m-1 btn-voy-item px-2 actBtn waves-effect waves-light"><svg class="svg-inline--fa fa-camera fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="camera" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"></path></svg>拍摄</button>
+								<button id="SeqremoteShotAbortbtn" class="btn btn-danger btn-sm m-1 btn-voy-item px-2 doubleConfirm waves-effect waves-light"><svg class="svg-inline--fa fa-times fa-w-11 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>中断</button>
+							</div>
+						</div>
+                
+						<hr class="mt-2 mb-3">
+						<!--制冷部分-->
+						<h5>
+							<svg class="svg-inline--fa fa-snowflake fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="snowflake" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M440.3 345.2l-33.8-19.5 26-7c8.2-2.2 13.1-10.7 10.9-18.9l-4-14.9c-2.2-8.2-10.7-13.1-18.9-10.9l-70.8 19-63.9-37 63.8-36.9 70.8 19c8.2 2.2 16.7-2.7 18.9-10.9l4-14.9c2.2-8.2-2.7-16.7-10.9-18.9l-26-7 33.8-19.5c7.4-4.3 9.9-13.7 5.7-21.1L430.4 119c-4.3-7.4-13.7-9.9-21.1-5.7l-33.8 19.5 7-26c2.2-8.2-2.7-16.7-10.9-18.9l-14.9-4c-8.2-2.2-16.7 2.7-18.9 10.9l-19 70.8-62.8 36.2v-77.5l53.7-53.7c6.2-6.2 6.2-16.4 0-22.6l-11.3-11.3c-6.2-6.2-16.4-6.2-22.6 0L256 56.4V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v40.4l-19.7-19.7c-6.2-6.2-16.4-6.2-22.6 0L138.3 48c-6.3 6.2-6.3 16.4 0 22.6l53.7 53.7v77.5l-62.8-36.2-19-70.8c-2.2-8.2-10.7-13.1-18.9-10.9l-14.9 4c-8.2 2.2-13.1 10.7-10.9 18.9l7 26-33.8-19.5c-7.4-4.3-16.8-1.7-21.1 5.7L2.1 145.7c-4.3 7.4-1.7 16.8 5.7 21.1l33.8 19.5-26 7c-8.3 2.2-13.2 10.7-11 19l4 14.9c2.2 8.2 10.7 13.1 18.9 10.9l70.8-19 63.8 36.9-63.8 36.9-70.8-19c-8.2-2.2-16.7 2.7-18.9 10.9l-4 14.9c-2.2 8.2 2.7 16.7 10.9 18.9l26 7-33.8 19.6c-7.4 4.3-9.9 13.7-5.7 21.1l15.5 26.8c4.3 7.4 13.7 9.9 21.1 5.7l33.8-19.5-7 26c-2.2 8.2 2.7 16.7 10.9 18.9l14.9 4c8.2 2.2 16.7-2.7 18.9-10.9l19-70.8 62.8-36.2v77.5l-53.7 53.7c-6.3 6.2-6.3 16.4 0 22.6l11.3 11.3c6.2 6.2 16.4 6.2 22.6 0l19.7-19.7V496c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-40.4l19.7 19.7c6.2 6.2 16.4 6.2 22.6 0l11.3-11.3c6.2-6.2 6.2-16.4 0-22.6L256 387.7v-77.5l62.8 36.2 19 70.8c2.2 8.2 10.7 13.1 18.9 10.9l14.9-4c8.2-2.2 13.1-10.7 10.9-18.9l-7-26 33.8 19.5c7.4 4.3 16.8 1.7 21.1-5.7l15.5-26.8c4.3-7.3 1.8-16.8-5.6-21z"></path></svg>
+							制冷
+						</h5>
+						<div class="justify-content-center mt-3">
+							<button class="btn btn-sm btn-flat m-1 p-2 lev1active float-right waves-effect waves-effect" id="resetTempChart">
+								<svg class="svg-inline--fa fa-broom fa-w-20 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="broom" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"></path></svg><!-- <i class="fas fa-broom mr-1"></i> --> 清除
+							</button>
+							<canvas id="tempChart" width="405" height="202" class="chartjs-render-monitor" style="display: block; width: 405px; height: 202px;"></canvas>
+							<div class="input-group mt-3">
+								<button class="btn btn-sm btn-primary m-1 flex-fill px-2 coolerBtn actBtn waves-effect waves-light" type="button" id="coolerOnBtn">
+									制冷 开
+								</button>
+								<button class="btn btn-sm btn-danger m-1 flex-fill px-2 coolerBtn actBtn waves-effect waves-light" type="button" id="coolerOffBtn">
+									制冷 关
+								</button>
+							</div>
+							<div class="input-group d-flex">
+								<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy m-1" id="tec" aria-describedby="timeShot" value="-15" placeholder="insert temp">
+								<button class="btn btn-sm btn-primary m-1 flex-fill px-2 coolerBtn actBtn waves-effect waves-light" type="button" id="setTempBtn">
+									设置温度 [C°]
+								</button>
+							</div>
+							<div class="input-group d-flex">
+								<button class="btn btn-sm btn-primary m-1 flex-fill px-2 coolerBtn actBtn waves-effect waves-light" type="button" id="warmupBtn">
+									升温
+								</button>
+								<button class="btn btn-sm btn-primary m-1 flex-fill px-2 coolerBtn actBtn waves-effect waves-light" type="button" id="coolDownBtn">
+									降温
+								</button>
+							</div>	
+						</div>
+						<h5 id="ccd_show"><svg class="svg-inline--fa fa-cog fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cog" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"></path></svg>CCD设置</h5>
+							<div class="input-group d-flex">
+								<div class="input-group d-flex">
+									<input type="number" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy m-1"id="usb" aria-describedby="timeShot" value="10" placeholder="insert temp">
+									<button class="btn btn-sm btn-primary m-1 flex-fill px-2 coolerBtn actBtn waves-effect waves-light btn-dark" type="button" id="setTempBtn">
+										设置USBTraffic
+									</button>
+							</div>
+							<div class="input-group d-flex">
+								<input type="text" class="form-control form-control-sm text-center bg-dark text-white border-sx-blueVoy m-1" id="filename" aria-describedby="timeShot" placeholder="">
+								<button onClick="javascript: img_set(document.getElementById('filename').value);" class="btn btn-sm btn-primary m-1 flex-fill px-2 coolerBtn actBtn waves-effect waves-light btn-dark" type="button" id="setTempBtn">
+									设置图像名称
+								</button>
+							</div>
+						</div>		
+					</div>
+				<div class="card-footer text-muted text-center">
+					<span>相机面板</span>
+				</div>
+			</div>
+		</div>
+		
+		<!--Mount menu-->
+		<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+			<a class="anchor" id="MountTarget"></a>
+			<div class="card elegant-color h100">
+				<div class="card-header">
+					<h2 id="mount_show" class="m-0">
+						<svg class="svg-inline--fa fa-crosshairs fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="crosshairs" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M500 224h-30.364C455.724 130.325 381.675 56.276 288 42.364V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v30.364C130.325 56.276 56.276 130.325 42.364 224H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h30.364C56.276 381.675 130.325 455.724 224 469.636V500c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-30.364C381.675 455.724 455.724 381.675 469.636 288H500c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12zM288 404.634V364c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40.634C165.826 392.232 119.783 346.243 107.366 288H148c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-40.634C119.768 165.826 165.757 119.783 224 107.366V148c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40.634C346.174 119.768 392.217 165.757 404.634 224H364c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40.634C392.232 346.174 346.243 392.217 288 404.634zM288 256c0 17.673-14.327 32-32 32s-32-14.327-32-32c0-17.673 14.327-32 32-32s32 14.327 32 32z"></path></svg>
+						赤道仪控制
+						<div class="collapseBtn ml-2">
+							<img src="img/collapseIcn.png">
+						</div>
+					</h2>
+				</div>
+				<div id="Mount" class="card-body">
+					<ul class="list-group bg-dark">
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-between">
+							<div class="statusLed" id="planStatLed"></div>
+							<span id="planConnText">星图信息</span>
+						</li>
+					</ul>
+					<div class="input-group my-3">
+						<input type="text" class="form-control form-control-sm text-center text-white border-sx-blueVoy bg-dark mr-lg-1 searchField" id="nameToSearch" aria-describedby="Name" value="" placeholder="输入目标名称">
+					</div>
+					<div class="input-group d-flex mt-0">
+						<div class="col p-0">
+							<input type="text" id="raSearch" class="form-control form-control-sm text-white text-center bg-dark border-sx-blueVoy mr-lg-1 searchField" placeholder="赤经" aria-label="RA" aria-describedby="RA">
+							<small class="p-0 text-muted text-small">赤经(J2000)</small>
+						</div>
+						<div class="col p-0 mx-1">
+							<input type="text" id="decSearch" class="form-control form-control-sm text-white text-center bg-dark border-sx-blueVoy mr-lg-1 searchField " placeholder="赤纬" aria-label="DEC" aria-describedby="DEC">
+							<small class="p-0 text-muted text-small">赤纬(J2000)</small>
+						</div>
+					</div>
+					<div id="cont-detail-obj" class="d-none">
+						<div class="text-center p-2 extraSmallText table-title" id="obj-table-title">
+							目标信息
+						</div>
+						<div id="obj-data-cont" class="d-flex scrollbar scrollbar-primary"></div>
+					</div>
+					<div class="input-group-append mt-3">
+						<button id="searchBtn" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 searchBtn  waves-effect waves-light" type="button">
+							<svg class="svg-inline--fa fa-search fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg><!-- <i class="fas fa-search mr-1"></i> -->本地查找
+						</button>
+						<button id="alaRoboClipbtn" class="btn btn-sm btn-deep-purple lev1active m-1 btn-voy-item px-2 waves-effect waves-light">
+							<svg class="svg-inline--fa fa-tag fa-w-16 mr-2 text-warning" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg><!-- <i class="fas fa-tag mr-2 text-warning"></i> -->
+							目标管理器
+						</button>
+						
+						<button id="resetSearchBtn" class="btn btn-sm btn-blue-grey m-1 btn-voy-item px-2 reset-btn waves-effect waves-light" type="button">
+							<svg class="svg-inline--fa fa-trash-alt fa-w-14 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg><!-- <i class="fas fa-trash-alt mr-1"></i> -->重置
+						</button>
+					</div>
+					<div class="input-group-append">
+						<button id="preciseGoTo" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 actBtn mount-btn waves-effect waves-light" type="button">
+							<svg class="svg-inline--fa fa-crosshairs fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="crosshairs" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M500 224h-30.364C455.724 130.325 381.675 56.276 288 42.364V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v30.364C130.325 56.276 56.276 130.325 42.364 224H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h30.364C56.276 381.675 130.325 455.724 224 469.636V500c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-30.364C381.675 455.724 455.724 381.675 469.636 288H500c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12zM288 404.634V364c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40.634C165.826 392.232 119.783 346.243 107.366 288H148c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-40.634C119.768 165.826 165.757 119.783 224 107.366V148c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40.634C346.174 119.768 392.217 165.757 404.634 224H364c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40.634C392.232 346.174 346.243 392.217 288 404.634zM288 256c0 17.673-14.327 32-32 32s-32-14.327-32-32c0-17.673 14.327-32 32-32s32 14.327 32 32z"></path></svg><!-- <i class="fas fa-crosshairs mr-1"></i> -->精准Goto
+						</button>
+						<button id="sendCoordToFov" class="btn btn-sm btn-outline-primary m-1 btn-voy-item px-2 lev1active waves-effect waves-light" type="button">
+							<svg class="svg-inline--fa fa-paper-plane fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="paper-plane" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg><!-- <i class="fas fa-paper-plane mr-1"></i> -->坐标发送至虚拟视野
+						</button>
+					</div>
+					<hr class="mt-2 mb-3">
+					<ul class="list-group bg-dark mb-0">
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-between" id="collapseSolvingTable">
+							<span class="text-center m-auto text-muted">远程解析</span>
+							<div class="f-right text-muted">
+								<svg class="svg-inline--fa fa-caret-square-down fa-w-14 pointer" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-square-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zM92.5 220.5l123 123c4.7 4.7 12.3 4.7 17 0l123-123c7.6-7.6 2.2-20.5-8.5-20.5H101c-10.7 0-16.1 12.9-8.5 20.5z"></path></svg><!-- <i class="fas fa-caret-square-down pointer"></i> -->
+							</div> 
+						</li>
+					</ul>
+					<div id="plSolveColl" class="collapse">
+						<ul class="list-group bg-dark mb-2 ">
+							<li class="list-group-item bg-dark d-flex align-items-center justify-content-between mount-panel-item px-2 plSolvLi">
+								<div class="col-6 p-0 text-muted">状态</div>
+								<div class="col-6 info-data-item" id="solvedStatText"></div>
+							</li>
+							<li class="list-group-item bg-dark d-flex align-items-center justify-content-around mount-panel-item px-1 plSolvLi">
+								<div class="col-2 p-0 text-muted">赤经</div>
+								<div class="col-4 info-data-item" id="solvRA"></div>
+								<div class="col-2 p-0 text-muted">赤纬</div>
+								<div class="col-4 info-data-item" id="solvDEC"></div>
+							</li>
+							<li class="list-group-item bg-dark d-flex align-items-center justify-content-around mount-panel-item px-1 plSolvLi">
+								<div class="col-6 p-0 text-muted">旋转角度</div>
+								<div class="col-6 info-data-item" id="solvPA"></div>
+							</li>
+							<li class="list-group-item bg-dark d-flex align-items-center justify-content-around mount-panel-item px-1 plSolvLi">
+								<button id="sendToFovSolveResult" class="btn btn-sm btn-outline-primary my-1 mx-3 btn-voy-item solve-btn actBtn w-100 waves-effect waves-light" type="button">
+									<svg class="svg-inline--fa fa-paper-plane fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="paper-plane" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg><!-- <i class="fas fa-paper-plane mr-1"></i> -->坐标发送至虚拟视野
+								</button>
+							</li>
+						</ul>
+						<div class="input-group">
+							<div class="switch blindSwitch m-auto">
+								<label>
+									天空解析
+									<input type="checkbox" class="blindSwitchInput">
+									<span class="lever"></span> 盲解析
+								</label>
+							</div>
+						</div>
+						<div class="input-group-append">
+							<button id="remoteSolveNoSync" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 actBtn solve-btn waves-effect waves-light" type="button">
+								<svg class="svg-inline--fa fa-map-pin fa-w-9 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-pin" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 512" data-fa-i2svg=""><path fill="currentColor" d="M112 316.94v156.69l22.02 33.02c4.75 7.12 15.22 7.12 19.97 0L176 473.63V316.94c-10.39 1.92-21.06 3.06-32 3.06s-21.61-1.14-32-3.06zM144 0C64.47 0 0 64.47 0 144s64.47 144 144 144 144-64.47 144-144S223.53 0 144 0zm0 76c-37.5 0-68 30.5-68 68 0 6.62-5.38 12-12 12s-12-5.38-12-12c0-50.73 41.28-92 92-92 6.62 0 12 5.38 12 12s-5.38 12-12 12z"></path></svg><!-- <i class="fas fa-map-pin mr-1"></i> -->远程解析
+							</button>
+							<button id="remoteSolveAndSync" class="btn btn-sm btn-deep-purple m-1 btn-voy-item px-2 actBtn solve-btn waves-effect waves-light" type="button">
+								<svg class="svg-inline--fa fa-sync fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sync" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M440.65 12.57l4 82.77A247.16 247.16 0 0 0 255.83 8C134.73 8 33.91 94.92 12.29 209.82A12 12 0 0 0 24.09 224h49.05a12 12 0 0 0 11.67-9.26 175.91 175.91 0 0 1 317-56.94l-101.46-4.86a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12H500a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12h-47.37a12 12 0 0 0-11.98 12.57zM255.83 432a175.61 175.61 0 0 1-146-77.8l101.8 4.87a12 12 0 0 0 12.57-12v-47.4a12 12 0 0 0-12-12H12a12 12 0 0 0-12 12V500a12 12 0 0 0 12 12h47.35a12 12 0 0 0 12-12.6l-4.15-82.57A247.17 247.17 0 0 0 255.83 504c121.11 0 221.93-86.92 243.55-201.82a12 12 0 0 0-11.8-14.18h-49.05a12 12 0 0 0-11.67 9.26A175.86 175.86 0 0 1 255.83 432z"></path></svg><!-- <i class="fas fa-sync mr-1"></i> -->解析并同步 *
+							</button>
+						</div>
+						<p class="text-muted extraSmallText">*警告: 此操作将执行同步操作，会在赤道仪内置模型中增加优选点。</p>
+					</div>
+					<hr class="mt-2 mb-3">
+					<ul class="list-group bg-dark">
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-between">
+							<div class="statusLed" id="mountStatLed"></div>
+							<span id="mountConnText">赤道仪信息</span>
+						</li>
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-between mount-panel-item px-2 bluevoy">
+							<div class="col-6 p-0 text-muted">状态</div>
+							<div class="col-6 info-data-item" id="parkStatText"></div>
+						</li>
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-around mount-panel-item px-1">
+							<div class="col-6 p-0 text-muted">AstroAir时间</div>
+							<div class="col-6 info-data-item" id="TI"></div>
+						</li>
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-around mount-panel-item px-1">
+							<div class="col-2 p-0 text-muted">赤经(Jnow)</div>
+							<div class="col-4 info-data-item" id="mntRA"></div>
+							<div class="col-2 p-0 text-muted">赤纬(Jnow)</div>
+							<div class="col-4 info-data-item" id="mntDEC"></div>
+						</li>
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-around mount-panel-item px-1">
+							<div class="col-2 p-0 text-muted">高度</div>
+							<div class="col-4 info-data-item" id="mntALT"></div>
+							<div class="col-2 p-0 text-muted">方位</div>
+							<div class="col-4 info-data-item" id="mntAZ"></div>
+						</li>
+						<li class="list-group-item bg-dark d-flex align-items-center justify-content-around mount-panel-item px-1">
+							<div class="col-2 p-0 text-muted">PIER</div>
+							<div class="col-4 text-uppercase info-data-item" id="mntPier"></div>
+							<div class="col-2 p-0 text-muted">翻转剩余时间</div>
+							<div class="col-4 info-data-item" id="mntFlip"></div>
+						</li>
+					</ul>
+					<div class="input-group-append mt-3">
+						<button id="parkBtn" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 mount-btn actBtn waves-effect waves-light" ct="3" type="button">
+							归位
+						</button>
+						<button id="unParkBtn" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 mount-btn actBtn waves-effect waves-light" ct="4" type="button">
+							取消归位
+						</button>
+					</div>
+					<div class="input-group-append">
+						<button id="trackBtn" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 mount-btn actBtn waves-effect waves-light" ct="1" type="button">
+							跟踪
+						</button>
+						<button id="notTrackBtn" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 mount-btn actBtn waves-effect waves-light" ct="2" type="button">
+							停止跟踪
+						</button>
+						<button id="homeMontBtn" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 mount-btn actBtn waves-effect waves-light" ct="6" type="button">
+							搜索零位
+						</button>
+					</div>
+					<div class="input-group-append">
+						<button id="gotoZenBtn" class="btn btn-sm btn-primary m-1 btn-voy-item px-2 mount-btn actBtn waves-effect waves-light" ct="5" type="button">
+							Goto到天顶
+						</button>
+						<button id="haltMontBtn" class="btn btn-sm btn-danger m-1 btn-voy-item px-2 mount-btn doubleConfirm waves-effect waves-light" type="button" value="Halt All">
+							中断操作
+						</button>
+					</div>
+				</div>
+				<div class="card-footer text-muted text-center">
+					赤道仪面板
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		<div class="row mb-4 pb-5">
+			<!--Autoguide menu-->
+			<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+				<a class="anchor" id="Autoguide"></a>
+				<div class="card elegant-color h100">
+					<div class="card-header">
+						<h2 id="phd2_show" class="m-0">
+							<svg class="svg-inline--fa fa-arrows-alt fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrows-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M352.201 425.775l-79.196 79.196c-9.373 9.373-24.568 9.373-33.941 0l-79.196-79.196c-15.119-15.119-4.411-40.971 16.971-40.97h51.162L228 284H127.196v51.162c0 21.382-25.851 32.09-40.971 16.971L7.029 272.937c-9.373-9.373-9.373-24.569 0-33.941L86.225 159.8c15.119-15.119 40.971-4.411 40.971 16.971V228H228V127.196h-51.23c-21.382 0-32.09-25.851-16.971-40.971l79.196-79.196c9.373-9.373 24.568-9.373 33.941 0l79.196 79.196c15.119 15.119 4.411 40.971-16.971 40.971h-51.162V228h100.804v-51.162c0-21.382 25.851-32.09 40.97-16.971l79.196 79.196c9.373 9.373 9.373 24.569 0 33.941L425.773 352.2c-15.119 15.119-40.971 4.411-40.97-16.971V284H284v100.804h51.23c21.382 0 32.09 25.851 16.971 40.971z"></path></svg>
+							导星控制
+							<div class="collapseBtn ml-2">
+								<img src="img/collapseIcn.png">
+							</div>
+						</h2>
+					</div>
+					<div  id="phd2" class="card-body">
+						<div class="justify-content-center mt-3">
+							<div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+								<div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+									<div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+								</div>
+								<div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+									<div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+								</div>
+							</div>
+							<button class="btn btn-sm btn-flat m-1 p-2 lev1active float-right waves-effect waves-effect" id="resetGuideChart">
+								<svg class="svg-inline--fa fa-broom fa-w-20 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="broom" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"></path></svg><!-- <i class="fas fa-broom mr-1"></i> --> 清除
+							</button>
+							<canvas id="guideChart" width="407" height="203" class="chartjs-render-monitor" style="display: block; width: 407px; height: 203px;"></canvas>
+                            <div class="input-group d-flex mt-3">
+                                <button class="btn btn-sm btn-primary m-1 flex-fill px-2 actBtn" type="button">校准</button>
+                                <button class="btn btn-sm btn-primary m-1 flex-fill px-2 actBtn" type="button">Acquire</button>
+                            </div>
+                            <div class="input-group d-flex">
+                                <button class="btn btn-sm btn-primary m-1 flex-fill px-2 actBtn" type="button">导星</button>
+                                <button class="btn btn-sm btn-primary m-1 flex-fill px-2 actBtn" type="button">抖动</button>
+                                <button class="btn btn-sm btn-danger m-1 flex-fill px-2 actBtn" type="button">停止</button>
+                            </div>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-outline-primary reset-btn btn-sm waves-effect waves-light" id="scaleYminus"><svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg><!-- <i class="fas fa-minus"></i> --></button>
+								<div class="btn btn-elegant  btn-sm waves-effect waves-light" disabled=""><span class="text-muted">尺度 </span><strong> <span id="yGuideScaleText" class="text-light">2</span> </strong><span class="text-muted"> 像素</span> </div>
+									<button type="button" class="btn btn-outline-primary reset-btn btn-sm waves-effect waves-light" id="scaleYplus"><svg class="svg-inline--fa fa-plus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg><!-- <i class="fas fa-plus"></i> --></button>
+								</div>             
+								<p class="text-white-50 mt-3 mb-0 extraSmallText">导星最后误差（像素）</p>
+								<ul class="list-group bg-dark extraSmallText my-1">
+									<li class="list-group-item bg-dark d-flex align-items-center justify-content-between p-2">
+										<div class="col-2 p-0 text-muted">X</div>
+										<div class="col-4 info-data-item" id="xErrGuide"></div>
+										<div class="col-2 p-0 text-muted">Y</div>
+										<div class="col-4 info-data-item" id="yErrGuide"></div>
+									</li>
+								</ul>
+							</div>
+					</div>
+					<div class="card-footer text-muted text-center ">
+						导星面板
+					</div>
+				</div>
+			</div>
+			
+			<!--Focuser menu-->
+			<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+				<a class="anchor" id="Focuser"></a>
+				<div class="card elegant-color h100">
+					<div class="card-header">
+						<h2 class="m-0">
+							<svg class="svg-inline--fa fa-dot-circle fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="far" data-icon="dot-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path></svg><!-- <i class="far fa-dot-circle mr-2"></i> -->电调焦
+							<div class="collapseBtn ml-2">
+								<img src="img/collapseIcn.png" alt="xpand">
+							</div>
+						</h2>
+					</div>
+					<div class="card-body">
+						<ul class="list-group bg-dark">
+							<li class="list-group-item bg-dark d-flex align-items-center justify-content-between">
+								<div class="statusLed" id="focusStatLed"></div>
+								<span id="mountConnText">电调焦信息</span>
+							</li>
+						</ul>
+						<div class="contProgDetail">
+							<ul class="list-group bg-dark text-small">
+								<li class="list-group-item bg-dark d-flex mount-panel-item p-0">
+									<div class="col p-1 m-0">
+										<div class="text-center text-muted">温度</div>
+										<div class="text-center shInField" id="focusTemp"></div>
+									</div>
+									<div class="col p-1 m-0">
+										<div class="text-center text-muted ">位置</div>
+										<div class="text-center shInField" id="focusPosition"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="btn-group btn-group-sm w-100 mt-2" role="group" aria-label="Basic example">
+							<button type="button" class="btn btn-unique btn-sm px-2 btnFocusOffset actBtn coolerBtn waves-effect waves-light" data-param="-100" id="focoffsm100">-100</button>
+							<button type="button" class="btn btn-indigo btn-sm px-2 btnFocusOffset actBtn coolerBtn waves-effect waves-light" data-param="-10" id="focoffsm10">-10</button>
+							<button type="button" class="btn btn-primary btn-sm px-2 btnFocusOffset actBtn coolerBtn mr-1 waves-effect waves-light" data-param="-1" id="focoffsm1">-1</button>
+							<button type="button" class="btn btn-primary btn-sm px-2 btnFocusOffset actBtn coolerBtn ml-1 waves-effect waves-light" data-param="+1" id="focoffs1">+1</button>
+							<button type="button" class="btn btn-indigo btn-sm px-2 btnFocusOffset actBtn coolerBtn waves-effect waves-light" data-param="+10" id="focoffs10">+10</button>
+							<button type="button" class="btn btn-unique btn-sm px-2 btnFocusOffset actBtn coolerBtn waves-effect waves-light" data-param="+100" id="focoffs100">+100</button>
+						</div>
+						<div class="input-group my-3">
+							<div class="input-group-prepend">
+								<button class="btn btn-md btn-primary m-0 px-3 py-2 z-depth-0 waves-effect actBtn coolerBtn" type="button" id="goToPositionFocuser"><svg class="svg-inline--fa fa-play fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg><!-- <i class="fas fa-play mr-2"></i> -->转到位置</button>
+							</div>
+							<input type="number" class="form-control text-small text-center text-primary" placeholder="" aria-label="Focuser position" id="focuserPositionGoto" aria-describedby="focuser-position">
+						</div>
+						<div class="m-0">
+							<div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+								<div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+									<div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+								</div>
+								<div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+									<div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+								</div>
+							</div>
+							<button class="btn btn-sm btn-flat m-1 p-2 reset-btn float-right waves-effect waves-effect" id="resetFocusChart">
+								<svg class="svg-inline--fa fa-broom fa-w-20 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="broom" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"></path></svg><!-- <i class="fas fa-broom mr-1"></i> --> 清除
+							</button>
+							<canvas id="focusStatChart" width="407" height="203" class="chartjs-render-monitor" style="display: block; width: 407px; height: 203px;"></canvas>
+							<ul class="list-group bg-dark my-2" id="focusStatsUl">
+								<li class="list-group-item bg-dark d-flex align-items-center justify-content-between p-2">
+									<span class="info-data-item extraSmallText text-muted col m-0 p-0">TIME</span>
+									<span class="info-data-item extraSmallText text-muted col-2  m-0 p-0">HFD</span>
+									<span class="info-data-item extraSmallText text-muted col  m-0 p-0">FLTR</span>
+									<span class="info-data-item extraSmallText text-muted col  m-0 p-0">TEMP</span>
+									<span class="info-data-item extraSmallText text-muted col  m-0 p-0">PERCDEV</span>
+									<span class="info-data-item extraSmallText text-muted col  m-0 p-0">DURAT</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card-footer text-muted text-center">
+						电调焦面板
+					</div>
+				</div>
+			</div>
+		<!--log Menu-->
+		<div class="col-lg-4 px-lg-1 px-xl-2 mb-xl-4 mb-2">
+			<a class="anchor" id="Log"></a>
+			<div class="card elegant-color h100">
+				<div class="card-header">
+					<h2 id="log_show" class="m-0">
+						<svg class="svg-inline--fa fa-clipboard-list fa-w-12 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="clipboard-list" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM96 424c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm0-96c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm0-96c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm96-192c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm128 368c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"></path></svg>
+						活动日志
+						<div class="collapseBtn ml-2">
+							<img src="img/collapseIcn.png">
+						</div>
+					</h2>
+				</div>
+				<div class="card-body">
+					<button class="btn btn-sm btn-flat m-1 p-2 lev1active float-right waves-effect waves-effect" id="resetLog">
+						<svg class="svg-inline--fa fa-broom fa-w-20 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="broom" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"></path></svg><!-- <i class="fas fa-broom mr-1"></i> --> 清除
+					</button>
+					<div id="logDiv" class="p-1 text-left"></div>
+				</div>
+				<div class="card-footer text-muted text-center">
+					活动日志面板
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<!-- Central Modal Medium Danger -->
+			<div class="modal fade" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-notify modal-danger" role="document">
+					<!--Content-->
+					<div class="modal-content">
+						<!--Header-->
+						<div class="modal-header">
+							<p class="heading lead" id="errorModalTitle">错误信息</p>
+							<button type="button" class="close modal-voy-btn" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true" class="white-text">&times;</span>
+							</button>
+						</div>
+						<!--Body-->
+						<div class="modal-body">
+							<div class="text-center">
+								<svg class="svg-inline--fa fa-exclamation-triangle fa-w-18 fa-4x mb-3 animated bounceIn" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="exclamation-triangle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path></svg>
+								<!--<i class="fas fa-exclamation-triangle fa-4x mb-3 animated bounceIn"></i>-->
+								<p id="errorMessage" class="note note-danger">
+									无法识别的错误
+								</p>
+								<p id="contactMessage" class="text-muted">
+									<small>如果有问题，请提供详细信息给开发者。</small>
+								</p>
+							</div>
+						</div>
+
+						<!--Footer-->
+						<div class="modal-footer justify-content-center">
+							<a class="btn btn-outline-danger modal-voy-btn"
+								href="mailto:astro_air@126.com"><i class="far fa-envelope mr-1"></i>联系开发者</a>
+							<button type="button" class="btn btn-danger waves-effect modal-voy-btn" data-dismiss="modal">
+								好的
+							</button>
+						</div>
+					</div>
+					<!--/.Content-->
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="modalDoubleWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+			<div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
+				<!--Content-->
+				<div class="modal-content">
+					<!--Header-->
+					<div class="modal-header">
+						<p class="heading lead" id="modalWarnTit">
+							Delete all Stored data and Refresh page
+						</p>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true" class="white-text">×</span>
+						</button>
+					</div>
+
+					<!--Body-->
+					<div class="modal-body">
+						<div class="text-center">
+							<svg class="svg-inline--fa fa-question fa-w-12 fa-4x mb-3 animated rotateIn text-danger" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"></path></svg><!-- <i class="fas fa-question fa-4x mb-3 animated rotateIn text-danger"></i> -->
+							<p id="contWarnModal" class="text-warning">
+								<svg class="svg-inline--fa fa-times-circle fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path></svg><!-- <i class="fas fa-times-circle mr-2"></i> -->清除存储数据并刷新页面
+								<div class="waves-ripple" data-hold="1601702974727" data-x="112.84375" data-y="15" data-scale="scale(5.04)" data-translate="translate(0,0)" style="top:15px;left:112.84375px;-webkit-transform:scale(5.04) translate(0,0);-moz-transform:scale(5.04) translate(0,0);-ms-transform:scale(5.04) translate(0,0);-o-transform:scale(5.04) translate(0,0);transform:scale(5.04) translate(0,0);opacity:1;-webkit-transition-duration:750ms;-moz-transition-duration:750ms;-o-transition-duration:750ms;transition-duration:750ms;"></div>
+							</p>
+							<p>是否真的确认您的操作？</p>
+						</div>
+					</div>
+					<!--Footer-->
+					<div class="modal-footer justify-content-center">
+						<a type="button" id="confirmDoubleWarn" class="btn btn-sm btn-warning modal-voy-btn waves-effect waves-light">是的<svg class="svg-inline--fa fa-check fa-w-16 ml-2" act="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check ml-2" act=""></i> --></a>
+						<a type="button" class="btn btn-sm btn-outline-warning waves-effect modal-voy-btn" data-dismiss="modal">不，谢谢</a>
+					</div>
+				</div>
+				<!--/.Content-->
+			</div>
+		</div>
+  
+		<div class="modal fade" id="modalDoubleWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+			<div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
+				<!--Content-->
+				<div class="modal-content">
+					<!--Header-->
+					<div class="modal-header">
+						<p class="heading lead" id="modalWarnTit">全部停止</p>
+
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true" class="white-text">×</span>
+						</button>
+					</div>
+
+					<!--Body-->
+					<div class="modal-body">
+						<div class="text-center">
+							<svg class="svg-inline--fa fa-question fa-w-12 fa-4x mb-3 animated rotateIn text-danger" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"></path></svg><!-- <i class="fas fa-question fa-4x mb-3 animated rotateIn text-danger"></i> -->
+							<p id="contWarnModal" class="text-warning">
+								<svg class="svg-inline--fa fa-skull-crossbones fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="skull-crossbones" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M439.15 453.06L297.17 384l141.99-69.06c7.9-3.95 11.11-13.56 7.15-21.46L432 264.85c-3.95-7.9-13.56-11.11-21.47-7.16L224 348.41 37.47 257.69c-7.9-3.95-17.51-.75-21.47 7.16L1.69 293.48c-3.95 7.9-.75 17.51 7.15 21.46L150.83 384 8.85 453.06c-7.9 3.95-11.11 13.56-7.15 21.47l14.31 28.63c3.95 7.9 13.56 11.11 21.47 7.15L224 419.59l186.53 90.72c7.9 3.95 17.51.75 21.47-7.15l14.31-28.63c3.95-7.91.74-17.52-7.16-21.47zM150 237.28l-5.48 25.87c-2.67 12.62 5.42 24.85 16.45 24.85h126.08c11.03 0 19.12-12.23 16.45-24.85l-5.5-25.87c41.78-22.41 70-62.75 70-109.28C368 57.31 303.53 0 224 0S80 57.31 80 128c0 46.53 28.22 86.87 70 109.28zM280 112c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32zm-112 0c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32z"></path></svg><!-- <i class="fas fa-skull-crossbones mr-2"></i> -->全部停止
+								<div class="waves-ripple" data-hold="1601075159937" data-x="28.65625" data-y="16" data-scale="scale(2.46)" data-translate="translate(0,0)" style="top:16px;left:28.65625px;-webkit-transform:scale(2.46) translate(0,0);-moz-transform:scale(2.46) translate(0,0);-ms-transform:scale(2.46) translate(0,0);-o-transform:scale(2.46) translate(0,0);transform:scale(2.46) translate(0,0);opacity:1;-webkit-transition-duration:750ms;-moz-transition-duration:750ms;-o-transition-duration:750ms;transition-duration:750ms;"></div>
+							</p>
+							<p>是否真的确认您的操作？</p>
+						</div>
+					</div>
+
+					<!--Footer-->
+					<div class="modal-footer justify-content-center">
+						<a type="button" id="confirmDoubleWarn" class="btn btn-sm btn-warning modal-voy-btn waves-effect waves-light">是的<svg class="svg-inline--fa fa-check fa-w-16 ml-2" act="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check ml-2" act=""></i> --></a>
+						<a type="button" class="btn btn-sm btn-outline-warning waves-effect modal-voy-btn" data-dismiss="modal">不，谢谢</a>
+					</div>
+				</div>
+				<!--/.Content-->
+			</div>
+		</div>
+		
+		<div class="container">
+			<!-- Central Modal Medium Connecting info -->
+			<div class="modal fade" id="centralModalConnecting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" style="display: none;" aria-hidden="true">
+				<div class="modal-dialog modal-notify modal-info" role="document">
+					<!--Content-->
+					<div class="modal-content">
+						<!--Header-->
+						<div class="modal-header">
+						<p class="heading lead">连接信息</p>
+						<button type="button" id="closeModalInfo" class="close modal-voy-btn" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true" class="white-text">×</span>
+						</button>
+					</div>
+
+					<!--Body-->
+					<div class="modal-body">
+						<div class="text-center">
+							<div class="spinner-border text-primary m-5" role="status">
+								<span class="sr-only">正在尝试连接......</span>
+							</div>
+							<p id="infoMessage" class="note note-info">
+								正在尝试连接......
+							</p>
+							<p id="contactMessageinfo" class="text-muted">
+								<small>如果有问题，请检查连接情况并提供详细信息给开发者。</small>
+							</p>
+						</div>
+					</div>
+
+					<!--Footer-->
+					<div class="modal-footer justify-content-center">
+						<button type="button" class="btn btn-primary modal-voy-btn waves-effect waves-light" data-dismiss="modal" style="pointer-events: auto;">
+							好的
+						</button>
+					</div>
+				</div>
+				<!--/.Content-->
+			</div>
+		</div>
+		
+		<div class="container container-fluid">
+			<!--  Modal  Roboclip dark -->
+			<div class="modal fade" id="roboClipModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" id="roboClipModalCont" role="document">
+					<!--Content-->
+					<div class="modal-content elegant-color rounded-lg">
+						<!--Header-->
+						<div class="modal-header" id="roboClipHeader">
+							<p class="heading lead my-auto ml-3">
+								<i class="fas fa-tag mr-2 text-warning"></i>
+								自定义目标管理器
+							</p>
+							<button type="button" class="btn btn-small btn-blue-grey modal-voy-btn p-2" data-dismiss="modal">
+								<i class="fas fa-window-close mr-2 my-auto"></i>关闭
+							</button>
+						</div>
+
+						<!--Body-->
+						<div class="modal-body py-0">
+							<div class="text-center">
+            
+								<ul class="p-0 list-group">
+									<span class="roboClipTitle text-uppercase text-small" id="rcOrderDescr">已按添加时间反向排序目标列表</span>
+										<li class="list-group-item bg-dark d-flex align-items-center">
+											<div class="row w-100 m-auto justify-content-center">
+												<div class="col-md-6 p-2">
+													<small class="text-muted mr-1">
+														<i class="fas fa-sort-amount-down-alt mr-1 text-white"></i>
+														排序：
+													</small>
+													<button id="orderDate" class="btn btn-light px-2 py-1 lev1active m-auto orderBtn text-dark text-small" type="button" data-param="0">
+														日期
+													</button>
+													<button id="orderName" class="btn btn-light px-2 py-1 lev1active m-auto orderBtn text-dark text-small" type="button" data-param="1">
+														名称
+													</button>
+													<button id="orderGroup" class="btn btn-light px-2 py-1 lev1active m-auto orderBtn text-dark text-small" type="button" data-param="2">
+														组名
+													</button>
+													<button id="orderRaDesc" class="btn btn-light px-2 py-1 lev1active m-auto orderBtn text-dark text-small" type="button" data-param="3">
+														赤经 &#11015; 
+													</button>
+													<button id="orderRaAsc" class="btn btn-light px-2 py-1 lev1active m-auto orderBtn text-dark text-small" type="button" data-param="4">
+														赤经 &#11014;
+													</button>
+												</div>
+												<div class="col-lg-6 p-2">
+													<div class="d-inline-block">
+														<div class="input-group justify-content-center">
+															<small class="text-muted mr-1 my-auto">
+																<i class="fas fa-filter mr-1 text-white"></i>
+																<span class="d-none d-sm-inline-block">过滤：</span>
+															</small>
+															<input type="text" id="filterText" class="form-control-sm text-center filter-input rounded-left" aria-label="Text input with dropdown Filter">
+															<div class="input-group-append">
+																<button class="btn btn-outline-warning btn-sm m-0 px-2 py-1 z-depth-0 dropdown-toggle lev1active rounded-0" id="filter-btn-id" type="button"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																	选择
+																</button>
+																<div class="dropdown-menu dropdown-menu-right dropdown-menu-filter text-dark" id="filterMenuSelId">
+																	<div class="dropdown-item drop-filter">名称</div>
+																	<div class="dropdown-item drop-filter">组名</div>
+																	<div class="dropdown-item drop-filter">备注</div>
+																	<div role="separator" class="dropdown-divider"></div>
+																	<div class="dropdown-item drop-filter-gray">
+																		<i class="fas fa-broom mr-1"></i>
+																		清除
+																	</div>
+																</div>
+																<button class="btn btn-warning btn-sm m-0 px-2 py-1 z-depth-0 lev1active text-dark rounded-0" id="applyFilterBtn" type="button"><i class="fas fa-search mr-1 d-none d-sm-inline-block"></i>开始过滤</button>
+																<button class="btn btn-light btn-sm m-0 px-2 py-1 z-depth-0 lev1active rounded-right" id="clear-btn-id" type="button"><i class="fas fa-broom"></i></button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="list-group-item bg-dark d-flex align-items-center text-primary pl-1 pr-3">
+											<div class="col">
+												<span class="info-data-item text-left">名称</span>
+											</div>
+											<div class="col">
+												<span class="info-data-item text-left">中心坐标(J2000)</span>
+											</div>
+											<div class="col-1">
+												<span class="info-data-item text-left">马赛克</span>
+											</div>
+											<div class="col-1"> 
+												<span class="info-data-item text-left">旋转角度°</span>
+											</div>
+											<div class="col"> 
+												<span class="info-data-item text-left">组名</span>
+											</div>
+											<div class="col d-none d-md-block"> 
+												<span class="info-data-item text-left ">备注</span>
+											</div>
+											<div class="col">
+												<span class="info-data-item text-left ">操作</span>
+											</div>
+										</li>
+									</ul>
+									<ul id="roboClipUL" class="p-0 list-group scrollbar scrollbar-primary"></ul>
+									<ul class="p-0">
+										<li class="list-group-item bg-dark">
+											<div class="row px-3 pt-2">
+												<div class="col">
+													<button id="getDataRcFov" class="btn btn-outline-success px-2 py-1 lev1active m-auto w-50" type="button">
+														<i class="fas fa-download mr-sm-3 mr-1"></i>
+														从虚拟视野获取数据
+													</button>
+												</div>
+											</div>
+											<div class="row px-3">
+												<div class="col-md-2 col-auto p-1 m-auto">
+													<input type="hidden" name="rcUid" id="rcUid" value="" class="rcField">
+													<small class="p-1 m-1 text-muted text-small">目标名称</small>
+													<input type="text" id="rcName" class="form-control form-control-sm text-white text-center bg-dark border-sx-blueVoy mr-lg-1 rcField" placeholder="在这里填写目标名称" aria-label="Target Name" aria-describedby="RA" />
+													<small class="mt-2 text-danger">
+														<span id="ledMosaicRoboclip"></span>
+													</small>
+												</div>
+												<div class="col-md-2 col-auto p-1 m-auto">
+													<small class="p-1 m-1 text-muted text-small">赤经(J2000)</small>
+													<input type="text" id="raRc" class="form-control form-control-sm text-white text-center bg-dark border-sx-blueVoy mr-lg-1 rcField" placeholder="赤经" aria-label="RA" aria-describedby="RA" />
+													<small class="p-0 m-1 text-muted text-small">赤纬(J2000)</small>
+													<input type="text" id="decRc" class="form-control form-control-sm text-white text-center bg-dark border-sx-blueVoy mr-lg-1 rcField" placeholder="赤纬" aria-label="dec" aria-describedby="DEC" />
+												</div>
+												<div class="col-md-1 col-auto m-auto p-1">
+													<small class="p-1 m-1 text-muted text-small">旋转角度°</small>
+													<input type="text" id="paRc" class="form-control form-control-sm text-white text-center bg-dark border-sx-blueVoy mr-lg-1 rcField" placeholder="旋转角度" aria-label="PA" aria-describedby="PA" />
+												</div>
+												<div class="col-md-2 col-auto p-1 m-auto ">
+													<small class="p-1 m-1 text-muted text-small">选择已有组名</small>
+													<select class="browser-default custom-select custom-select-sm bg-dark text-white border-sx-blueVoy rcField" id="groupSelect" editable="true" searchable="Search and add here...">
+														<option value="" selected>选择已有组名</option>
+													</select>
+													<small class="p-1 m-1 text-muted text-small">添加新组名</small>
+													<input type="text" id="newGroup" class="form-control form-control-sm text-white text-center bg-dark border-sx-blueVoy mr-lg-1 rcField" placeholder="在这里填写新的组名" aria-label="newGroup" aria-describedby="newGroup" />
+												</div>
+												<div class="col-md-2 col-auto p-1 m-auto ">
+													<small class="p-1 m-1 text-muted text-small ">备注</small>
+													<textarea class="form-control form-control-sm rcField border-sx-blueVoy" id="rCnote" rows="2"></textarea>
+												</div>
+												<div class="col-md-2 col m-auto p-0">
+													<div role="group">
+													<button id="newFormRc" class="btn btn-primary btn-voy-Rc m-1 flex-fill p-2 lev1active" type="button">
+														<i class="fas fa-plus-square"></i><br><span class="extraSmallText m">新建</span>
+													</button>
+													<button id="saveFormRc" class="btn btn-deep-purple btn-voy-Rc m-1 flex-fill p-2 lev1active" type="button" >
+														<i class="fas fa-save"></i><br><span class="extraSmallText">保存</span>
+													</button>
+												</div>
+												<div role="group">
+													<button id="clearFormRc" class="btn btn-blue-grey btn-voy-Rc  m-1 flex-fill p-2  lev1active" type="button">
+														<i class="fas fa-broom"></i><br><span class="extraSmallText">清除</span>
+													</button>
+													<button id="deleteFormRc" class="btn btn-danger btn-voy-Rc m-1 flex-fill p-2 lev1active" type="button" >
+														<i class="fas fa-trash-alt"></i><br><span class="extraSmallText">删除</span>
+													</button>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+								<div class="alert alert-success rcAlert" id="rcSuccess" role="alert" >
+									<h6>操作完成。</h6>
+									<p class="m-0 extraSmallText"></p>
+								</div>
+								<div class="alert alert-danger rcAlert" id="rcDanger" role="alert" >
+									<h6>发生错误!</h6>
+									<p class="m-0 extraSmallText"></p>
+								</div>
+								<div class="alert alert-warning rcAlert" id="rcWarning" role="alert" >
+									<h6>请注意!</h6>
+									<p class="m-0 extraSmallText"></p>
+								</div>
+							</div>
+						</div>
+
+						<!--Footer-->
+						<div class="modal-footer justify-content-center p-2 extraSmallText text-uppercase">
+							<span class="text-warning">内置操作详解</span>
+							<div class="row text-white-50">
+								<div class="col col-auto">
+									<i class="fas fa-paper-plane"></i>
+									 = 发送坐标数据至虚拟视野并关闭此窗口
+								</div>
+								<div class="col col-auto">
+									<i class="fas fa-edit "></i>
+									 = 编辑目标
+								</div>
+								<div class="col col-auto">
+									<i class="fas fa-trash-alt "></i> 
+									= 删除目标
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--/.Content-->
+				</div>
+			</div>
+		</div>
+
+  
+<!--左侧菜单栏-->
+<div class="right align-items-center d-flex" id="miniMenuContainer" style="left: 4px;">
+    <div class="card" id="miniMenu">
+		<div class="col pt-3 text-center" id="colMenu">
+			<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+				<a href="#Connection" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-plug fa-w-12 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plug" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M256 144V32c0-17.673 14.327-32 32-32s32 14.327 32 32v112h-64zm112 16H16c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h16v32c0 77.406 54.969 141.971 128 156.796V512h64v-99.204c73.031-14.825 128-79.39 128-156.796v-32h16c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16zm-240-16V32c0-17.673-14.327-32-32-32S64 14.327 64 32v112h64z"></path></svg><!-- <i class="fas fa-plug mr-2"></i> -->
+					连接信息
+				</a>
+				<a href="#Environment" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-cog fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cog" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"></path></svg><!-- <i class="fas fa-cog mr-2"></i> -->
+					设备详情
+				</a>
+				<a href="#MountTarget" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-crosshairs fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="crosshairs" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M500 224h-30.364C455.724 130.325 381.675 56.276 288 42.364V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v30.364C130.325 56.276 56.276 130.325 42.364 224H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h30.364C56.276 381.675 130.325 455.724 224 469.636V500c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-30.364C381.675 455.724 455.724 381.675 469.636 288H500c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12zM288 404.634V364c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40.634C165.826 392.232 119.783 346.243 107.366 288H148c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-40.634C119.768 165.826 165.757 119.783 224 107.366V148c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40.634C346.174 119.768 392.217 165.757 404.634 224H364c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40.634C392.232 346.174 346.243 392.217 288 404.634zM288 256c0 17.673-14.327 32-32 32s-32-14.327-32-32c0-17.673 14.327-32 32-32s32 14.327 32 32z"></path></svg>
+					赤道仪和目标
+				</a>
+				<a href="#LastImage" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-image fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"></path></svg>
+					最近图像
+				</a>
+				<a href="#Camera" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-camera fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="camera" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"></path></svg>
+					相机
+				</a>
+				<a href="#Progress" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-stopwatch fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="stopwatch" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 304c0 114.9-93.1 208-208 208S16 418.9 16 304c0-104 76.3-190.2 176-205.5V64h-28c-6.6 0-12-5.4-12-12V12c0-6.6 5.4-12 12-12h120c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-28v34.5c37.5 5.8 71.7 21.6 99.7 44.6l27.5-27.5c4.7-4.7 12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17l-29.4 29.4-.6.6C419.7 223.3 432 262.2 432 304zm-176 36V188.5c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12V340c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"></path></svg>
+					进度
+				</a>
+				<a href="#Focuser" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-dot-circle fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="far" data-icon="dot-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path></svg>
+					调焦
+				</a>
+				<a href="#Autoguide" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-arrows-alt fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrows-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M352.201 425.775l-79.196 79.196c-9.373 9.373-24.568 9.373-33.941 0l-79.196-79.196c-15.119-15.119-4.411-40.971 16.971-40.97h51.162L228 284H127.196v51.162c0 21.382-25.851 32.09-40.971 16.971L7.029 272.937c-9.373-9.373-9.373-24.569 0-33.941L86.225 159.8c15.119-15.119 40.971-4.411 40.971 16.971V228H228V127.196h-51.23c-21.382 0-32.09-25.851-16.971-40.971l79.196-79.196c9.373-9.373 24.568-9.373 33.941 0l79.196 79.196c15.119 15.119 4.411 40.971-16.971 40.971h-51.162V228h100.804v-51.162c0-21.382 25.851-32.09 40.97-16.971l79.196 79.196c9.373 9.373 9.373 24.569 0 33.941L425.773 352.2c-15.119 15.119-40.971 4.411-40.97-16.971V284H284v100.804h51.23c21.382 0 32.09 25.851 16.971 40.971z"></path></svg>
+					导星
+				</a>
+				<a href="#Log" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-clipboard-list fa-w-12 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="clipboard-list" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM96 424c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm0-96c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm0-96c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm96-192c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm128 368c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"></path></svg>
+					活动日志
+				</a>
+				<a href="manage.php" class="btn btn-primary menuBtn m-0 waves-effect waves-light">
+					<svg class="svg-inline--fa fa-cog fa-w-16 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cog" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"></path></svg>
+					系统设置
+				</a>
+				<button class="btn aqua-gradient menuBtn m-0 waves-effect waves-light" id="collapseAllBtn">
+					<svg class="svg-inline--fa fa-minus-square fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z"></path></svg><!-- <i class="fas fa-minus-square mr-2"></i> -->折叠所有面板
+				</button>
+				<button class="btn aqua-gradient menuBtn m-0 waves-effect waves-light" id="fsBtn">
+					<svg class="svg-inline--fa fa-expand-arrows-alt fa-w-14 mr-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="expand-arrows-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M448 344v112a23.94 23.94 0 0 1-24 24H312c-21.39 0-32.09-25.9-17-41l36.2-36.2L224 295.6 116.77 402.9 153 439c15.09 15.1 4.39 41-17 41H24a23.94 23.94 0 0 1-24-24V344c0-21.4 25.89-32.1 41-17l36.19 36.2L184.46 256 77.18 148.7 41 185c-15.1 15.1-41 4.4-41-17V56a23.94 23.94 0 0 1 24-24h112c21.39 0 32.09 25.9 17 41l-36.2 36.2L224 216.4l107.23-107.3L295 73c-15.09-15.1-4.39-41 17-41h112a23.94 23.94 0 0 1 24 24v112c0 21.4-25.89 32.1-41 17l-36.19-36.2L263.54 256l107.28 107.3L407 327.1c15.1-15.2 41-4.5 41 16.9z"></path></svg><!-- <i class="fas fa-expand-arrows-alt mr-2"></i> -->全屏模式
+				</button>
+			</div>
+		</div>
+		<div class="card-footer text-muted text-center extraSmallText text-uppercase py-2" id="menufooter">
+        面板跳转
+		</div>
+	</div>
+    <div id="handHand">
+		<div class="btn btn-danger modal-voy-btn px-2 z-depth-0 waves-effect waves-light"><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg><!-- <i class="fas fa-bars"></i> --></div>
+    </div>
+</div>
+<!--Go to Top Page-->
+<div class="fixed-action-btn smooth-scroll" style="bottom: 42px; right: 0px;">
+    <button id="goToTopBtn" class="btn btn-floating btn-outline-light-green modal-voy-btn waves-effect waves-light" style="display: block;">
+		<svg class="svg-inline--fa fa-angle-double-up fa-w-10" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M177 255.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 351.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 425.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1zm-34-192L7 199.7c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l96.4-96.4 96.4 96.4c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9l-136-136c-9.2-9.4-24.4-9.4-33.8 0z"></path></svg><!-- <i class="fas fa-angle-double-up"></i> -->
+    </button>
+	</div>
+		<footer id="sticky-footer" class="fixed-bottom text-white extraSmallText py-1 py-sm-2" style="">
+			<div class="container-fluid d-flex justify-content-between flex-column flex-sm-row">
+				<div class="align-self-center">
+					<span id="dashVer"></span>
+				</div>
+				<div class="align-self-center">
+					By Max
+				</div>
+			</div>
+		</footer>
+	</div>
+</div>
+
+	<!--Main JS 代码-->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="js/fdb.min.js"></script>
+	<script type="text/javascript" src="js/anime.min.js"></script>
+	<script type="text/javascript" src="js/all.min.js"></script>
+	<script type="text/javascript" src="js/download.js"></script>
+	<script type="text/javascript" src="js/clipboard.min.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/astroair.js"></script>
+</body>
+</html>
