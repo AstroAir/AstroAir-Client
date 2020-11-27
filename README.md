@@ -10,7 +10,8 @@ AstroAir客户端
 - ### 安装依赖项
 - ```sudo apt-get update&&sudo apt-get upgade     //系统更新```
 - ```sudo apt-get install nginx php7.3-fpm php7.3-cgi php7.3-cli      //安装服务器```
-- ```sudo apt-get install python3```
+- ```sudo apt-get install php7.3-xml    //如果要安装phpsysinfo```
+- ```sudo apt-get install python3 python3-dev     //安装python编译环境，建议使用python3```
 - ```sudo -H pip3 install indiweb     //安装INDI服务器```
 - ```sudo apt install gpsd virtualgps     //安装GPS服务```
 - ```sudo pip3 install gps3 gevent```
@@ -23,4 +24,5 @@ AstroAir客户端
 - ```sudo systemctl enable virtualgps.service```
 - ### 重启后即可使用
 ## 问题报告
-- 加入官方QQ群，或直接在Github提交问题报告。
+- 加入官方QQ群710622107，或直接在Github提交问题报告。
+- 官方邮箱<astro_air@126.com>
