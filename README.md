@@ -8,11 +8,15 @@ AstroAir客户端
 - 在使用前，建议先插好所有设备，否则可能会出现树莓派供电问题。<br>
 ## 安装客户端
 - ### 安装依赖项
+
+- ```wget -O - https://www.astroberry.io/repo/key | sudo apt-key add -```
+- ```sudo su -c "echo 'deb https://www.astroberry.io/repo/ buster main' > /etc/apt/sources.list.d/astroberry.list"```
 - ```sudo apt-get update&&sudo apt-get upgade     //系统更新```
 - ```sudo apt-get install nginx php7.3-fpm php7.3-cgi php7.3-cli      //安装服务器```
 - ```sudo apt-get install php7.3-xml    //如果要安装phpsysinfo```
 - ```sudo apt-get install python3 python3-dev     //安装python编译环境，建议使用python3```
-- ```sudo -H pip3 install indiweb     //安装INDI服务器```
+- ```sudo apt install indi-full gsc    //安装INDI服务器和GSC虚拟图像（可选）```
+- ```sudo -H pip3 install indiweb     //安装INDIWeb服务器```
 - ```sudo apt install gpsd virtualgps     //安装GPS服务```
 - ```sudo pip3 install gps3 gevent```
 - ### 部署网页
